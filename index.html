@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'TWK';
+            src: url('twk.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'TWK', sans-serif;
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 85px;
+            left: 0;
+            right: 0;
+            background-color: #131518;
+            z-index: 40;
+            padding: 20px;
+        }
+        
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        
+        .hamburger-btn {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none !important;
+            }
+            
+            .hamburger-btn {
+                display: block;
+            }
+            
+            .desktop-get-started {
+                display: none !important;
+            }
+            
+            /* Mobile Hero Text */
+            .hero-heading {
+                font-size: 46.7554px !important;
+                line-height: 46.7554px !important;
+                letter-spacing: -1.87022px !important;
+            }
+            
+            /* Mobile Section Headings */
+            .section-heading {
+                font-size: 28.1198px !important;
+                line-height: 30.9318px !important;
+                letter-spacing: -1.40599px !important;
+            }
+            
+            /* Reduce margins on mobile */
+            section {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat" style="background-image: url('bg.webp');">
+    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-[14px] px-[14px]">
+        <div class="flex items-center justify-between px-[14px] w-full" style="max-width: 1251.58px; height: 56.9922px; background-color: #131518;">
+            <div class="flex items-center gap-3">
+                <img src="logo.svg" alt="Logo" class="h-10">
+                <span class="text-white text-[14px]">Click Mentorship</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="desktop-menu flex gap-[35px] items-center">
+                <a href="#pricing" class="text-white text-[14px] hover:text-gray-300 transition-colors">Pricing</a>
+                <a href="#about" class="text-white text-[14px] hover:text-gray-300 transition-colors">About Us</a>
+                <a href="#contact" class="text-white text-[14px] hover:text-gray-300 transition-colors">Contact Us</a>
+            </div>
+            
+            <!-- Hamburger Button (Mobile) -->
+            <button class="hamburger-btn text-white" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            
+            <button class="desktop-get-started text-white transition-all hover:-translate-y-0.5" style="width: 91.3281px; height: 36.5547px; font-size: 12.4444px; line-height: 15.5556px; letter-spacing: -0.0544444px; background-color: rgb(41, 141, 255);">Get Started</button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay">
+        <div class="flex flex-col gap-4">
+            <a href="#pricing" class="text-white text-[14px] hover:text-gray-300 transition-colors py-2" onclick="closeMobileMenu()">Pricing</a>
+            <a href="#about" class="text-white text-[14px] hover:text-gray-300 transition-colors py-2" onclick="closeMobileMenu()">About Us</a>
+            <a href="#contact" class="text-white text-[14px] hover:text-gray-300 transition-colors py-2" onclick="closeMobileMenu()">Contact Us</a>
+            <button class="text-white transition-all hover:-translate-y-0.5 mt-2" style="width: 91.3281px; height: 36.5547px; font-size: 12.4444px; line-height: 15.5556px; letter-spacing: -0.0544444px; background-color: rgb(41, 141, 255);">Get Started</button>
+        </div>
+    </div>
+
+    <main class="min-h-screen flex flex-col items-center justify-center pt-20 px-5">
+        <div class="text-center text-white max-w-3xl mx-auto mb-auto mt-32">
+            <h1 class="hero-heading text-[80.0503px] leading-[80.0503px] tracking-[-4.80302px]">Welcome to Your Mentorship Journey</h1>
+        </div>
+        <div class="absolute bottom-20 text-center text-white max-w-4xl px-5">
+            <p style="font-size: 16.0669px; line-height: 20.887px; letter-spacing: -0.160669px;">We've helped hundreds of people achieve their financial goals, We've developed a meticulously crafted, comprehensive six-step process that acts as your personal roadmap, guiding you steadily towards your investment goals.</p>
+        </div>
+    </main>
+
+    <section class="bg-black text-white pt-20 px-12 pb-12">
+        <div class="text-left">
+            <h2 class="section-heading" style="font-size: 53.3195px; line-height: 58.6514px; letter-spacing: -2.66597px;">Why choose Click Mentorship?</h2>
+            <p class="mt-6" style="font-size: 53.3195px; line-height: 58.6514px; letter-spacing: -2.66597px;">At Click Mentorship, we specialize exclusively in futures trading — and that focus is what sets us apart. With a consistent win rate above 80%, we've helped traders navigate volatile markets with precision, discipline, and confidence.</p>
+        </div>
+    </section>
+
+    <section class="bg-black pb-20 px-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-8 text-left" style="background-color: #222529;">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(41, 141, 255);"></div>
+                    <h3 class="text-white" style="font-size: 16px; line-height: 19.2px; letter-spacing: -0.16px;">Focused Expertise, Real Results</h3>
+                </div>
+                <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">We're not generalists. We live and breathe futures. Whether it's NQ, Gold, or other major contracts, our team is built around one mission: helping traders master the futures market with real-world strategies that work.</p>
+            </div>
+
+            <div class="p-8 text-left" style="background-color: #222529;">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(41, 141, 255);"></div>
+                    <h3 class="text-white" style="font-size: 16px; line-height: 19.2px; letter-spacing: -0.16px;">Proven Systems, Built by Traders</h3>
+                </div>
+                <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">Our strategies weren't copied from textbooks – they were built by traders, tested in real markets, and refined over time. We teach you how to think, react, and execute with intention.</p>
+            </div>
+
+            <div class="p-8 text-left" style="background-color: #222529;">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(41, 141, 255);"></div>
+                    <h3 class="text-white" style="font-size: 16px; line-height: 19.2px; letter-spacing: -0.16px;">Data-Driven Edge</h3>
+                </div>
+                <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">We stay ahead of market shifts by combining technical precision with economic insight. Our edge comes from real-time analysis, structured setups, and the discipline to follow through.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-20 px-12">
+        <div class="text-center mb-16">
+            <h2 class="section-heading text-black" style="font-size: 53.3195px; line-height: 58.6514px; letter-spacing: -2.66597px;">Our pricing</h2>
+            <p class="mt-6 text-black" style="font-size: 16.0669px; line-height: 20.887px; letter-spacing: -0.160669px;">Our pricing is designed to be affordable for anyone serious about investing.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Bronze - Free -->
+            <div class="border border-gray-200 p-8 text-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(255, 108, 61);"></div>
+                    <h3 class="text-black" style="font-size: 24px; font-weight: normal;">Bronze - Free</h3>
+                </div>
+                <p class="text-black mb-2" style="font-size: 32px; font-weight: normal;">Free</p>
+                <p class="text-black mb-6" style="font-size: 16px;">Great for members starting their trading journey</p>
+                
+                <div class="mb-6 space-y-2">
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Basic access to our trading Discord</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Community support</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Ask questions and get guidance</p>
+                </div>
+
+                <button class="w-full text-white py-3 transition-all" style="background-color: rgb(255, 108, 61); font-size: 16px;">Pay Now</button>
+            </div>
+
+            <!-- Silver - 1 Month -->
+            <div class="border border-gray-200 p-8 text-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(255, 108, 61);"></div>
+                    <h3 class="text-black" style="font-size: 24px; font-weight: normal;">Silver - 1 Month</h3>
+                </div>
+                <p class="text-black mb-2" style="font-size: 32px; font-weight: normal;">$150</p>
+                <p class="text-black mb-6" style="font-size: 16px;">Everything in Bronze plus</p>
+                
+                <div class="mb-6 space-y-2">
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Daily trading alerts</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• One-on-one call with Click Mentorship</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Schedule at your convenience</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Market analysis access</p>
+                </div>
+
+                <button class="w-full text-white py-3 transition-all" style="background-color: rgb(255, 108, 61); font-size: 16px;">Pay Now</button>
+            </div>
+
+            <!-- Gold - 3 Months -->
+            <div class="border border-gray-200 p-8 text-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(255, 108, 61);"></div>
+                    <h3 class="text-black" style="font-size: 24px; font-weight: normal;">Gold - 3 Months</h3>
+                </div>
+                <p class="text-black mb-2" style="font-size: 32px; font-weight: normal;">$350</p>
+                <p class="text-black mb-6" style="font-size: 16px;">Everything in Silver plus</p>
+                
+                <div class="mb-6 space-y-2">
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Multiple one-on-one calls</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• 3 months of personalized guidance</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Dark pool data access</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Live trading sessions</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• 10 exclusive channels</p>
+                </div>
+
+                <button class="w-full text-white py-3 transition-all" style="background-color: rgb(255, 108, 61); font-size: 16px;">Pay Now</button>
+            </div>
+
+            <!-- Platinum - 6 Months -->
+            <div class="border border-gray-200 p-8 text-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(255, 108, 61);"></div>
+                    <h3 class="text-black" style="font-size: 24px; font-weight: normal;">Platinum - 6 Months</h3>
+                </div>
+                <p class="text-black mb-2" style="font-size: 32px; font-weight: normal;">$700</p>
+                <p class="text-black mb-6" style="font-size: 16px;">Everything in Gold plus</p>
+                
+                <div class="mb-6 space-y-2">
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• 6 months of personalized guidance</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Priority support</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• 22 exclusive channels</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Exclusive role and badge</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Premium opportunities</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Advanced market analysis bots</p>
+                </div>
+
+                <button class="w-full text-white py-3 transition-all" style="background-color: rgb(255, 108, 61); font-size: 16px;">Pay Now</button>
+            </div>
+
+            <!-- Diamond - Yearly -->
+            <div class="border border-gray-200 p-8 text-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(255, 108, 61);"></div>
+                    <h3 class="text-black" style="font-size: 24px; font-weight: normal;">Diamond - Yearly</h3>
+                </div>
+                <p class="text-black mb-2" style="font-size: 32px; font-weight: normal;">$1050</p>
+                <p class="text-black mb-6" style="font-size: 16px;">Everything in Platinum plus</p>
+                
+                <div class="mb-6 space-y-2">
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Full year of personalized guidance</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Weekly strategy sessions</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Custom trading plans</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• VIP Discord role</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Early access to new features</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Exclusive webinars and workshops</p>
+                </div>
+
+                <button class="w-full text-white py-3 transition-all" style="background-color: rgb(255, 108, 61); font-size: 16px;">Pay Now</button>
+            </div>
+
+            <!-- Elite - Lifetime -->
+            <div class="border border-gray-200 p-8 text-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <div style="width: 10.6641px; height: 10.6641px; background-color: rgb(255, 108, 61);"></div>
+                    <h3 class="text-black" style="font-size: 24px; font-weight: normal;">Elite - Lifetime</h3>
+                </div>
+                <p class="text-black mb-2" style="font-size: 32px; font-weight: normal;">$1400</p>
+                <p class="text-black mb-6" style="font-size: 16px;">Everything in Diamond plus</p>
+                
+                <div class="mb-6 space-y-2">
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Unlimited one-on-one calls</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Lifetime access to all features</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Direct messaging with Click Mentorship</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Personalized trading strategies</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Elite member badge</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• All future updates included</p>
+                    <p style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">• Priority in all opportunities</p>
+                </div>
+
+                <button class="w-full text-white py-3 transition-all" style="background-color: rgb(255, 108, 61); font-size: 16px;">Pay Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-black py-20 px-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+            <!-- FAQ Title -->
+            <div class="md:w-1/3">
+                <h2 class="section-heading text-white" style="font-size: 53.3195px; line-height: 58.6514px; letter-spacing: -2.66597px;">Frequently Asked Questions</h2>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="md:w-2/3 space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item" style="background-color: #131518; padding: 20px; cursor: pointer;">
+                    <div class="faq-question" style="color: rgb(255, 255, 255); font-size: 18px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What is Click Mentorship?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer" style="color: rgb(137, 145, 159); font-size: 14.2222px; line-height: 18.4889px; margin-top: 12px; display: none;">
+                        Click Mentorship is a specialized futures trading community focused exclusively on helping traders master the futures market with proven strategies and personalized guidance.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item" style="background-color: #131518; padding: 20px; cursor: pointer;">
+                    <div class="faq-question" style="color: rgb(255, 255, 255); font-size: 18px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>How do the one-on-one calls work?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer" style="color: rgb(137, 145, 159); font-size: 14.2222px; line-height: 18.4889px; margin-top: 12px; display: none;">
+                        You can schedule personalized calls with Click Mentorship at your convenience. During these sessions, you'll receive tailored guidance, strategy reviews, and answers to your specific trading questions.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item" style="background-color: #131518; padding: 20px; cursor: pointer;">
+                    <div class="faq-question" style="color: rgb(255, 255, 255); font-size: 18px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What markets do you focus on?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer" style="color: rgb(137, 145, 159); font-size: 14.2222px; line-height: 18.4889px; margin-top: 12px; display: none;">
+                        We specialize exclusively in futures trading, including major contracts like NQ, Gold, and other futures markets. Our focus allows us to provide deep expertise in this specific area.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item" style="background-color: #131518; padding: 20px; cursor: pointer;">
+                    <div class="faq-question" style="color: rgb(255, 255, 255); font-size: 18px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Can I upgrade my plan later?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer" style="color: rgb(137, 145, 159); font-size: 14.2222px; line-height: 18.4889px; margin-top: 12px; display: none;">
+                        Yes, you can upgrade your plan at any time. Simply contact us and we'll help you transition to a higher tier with all the additional benefits included.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item" style="background-color: #131518; padding: 20px; cursor: pointer;">
+                    <div class="faq-question" style="color: rgb(255, 255, 255); font-size: 18px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What is your win rate?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer" style="color: rgb(137, 145, 159); font-size: 14.2222px; line-height: 18.4889px; margin-top: 12px; display: none;">
+                        We maintain a consistent win rate above 80% through disciplined trading strategies, real-time market analysis, and proven risk management techniques.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-20 px-12">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-heading text-black text-center mb-16" style="font-size: 53.3195px; line-height: 58.6514px; letter-spacing: -2.66597px;">What People Are Saying</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="p-8 border border-gray-200">
+                    <div class="mb-4">
+                        <span class="text-orange-500" style="font-size: 24px;">★★★★★</span>
+                    </div>
+                    <p class="mb-6" style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">
+                        "Click Mentorship completely transformed my trading approach. The one-on-one sessions gave me the confidence and strategies I needed to consistently profit in the futures market. Best investment I've made in my trading career."
+                    </p>
+                    <div>
+                        <p class="text-black" style="font-size: 16px; font-weight: normal;">Michael Rodriguez</p>
+                        <p style="font-size: 14.2222px; color: rgb(137, 145, 159);">Diamond Member</p>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="p-8 border border-gray-200">
+                    <div class="mb-4">
+                        <span class="text-orange-500" style="font-size: 24px;">★★★★★</span>
+                    </div>
+                    <p class="mb-6" style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">
+                        "The daily alerts and live trading sessions are invaluable. I've learned more in 3 months with Click Mentorship than I did in years of trading alone. The community support and expert guidance make all the difference."
+                    </p>
+                    <div>
+                        <p class="text-black" style="font-size: 16px; font-weight: normal;">Sarah Chen</p>
+                        <p style="font-size: 14.2222px; color: rgb(137, 145, 159);">Platinum Member</p>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="p-8 border border-gray-200">
+                    <div class="mb-4">
+                        <span class="text-orange-500" style="font-size: 24px;">★★★★★</span>
+                    </div>
+                    <p class="mb-6" style="font-size: 14.2222px; line-height: 18.4889px; letter-spacing: -0.142222px; color: rgb(108, 117, 132);">
+                        "The personalized guidance and access to dark pool data has given me an edge I never had before. The 80%+ win rate speaks for itself. This is the real deal for serious futures traders."
+                    </p>
+                    <div>
+                        <p class="text-black" style="font-size: 16px; font-weight: normal;">James Thompson</p>
+                        <p style="font-size: 14.2222px; color: rgb(137, 145, 159);">Elite Member</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-20 px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <p class="text-white mb-6" style="font-size: 16.0669px; line-height: 20.887px; letter-spacing: -0.160669px;">
+                    We are committed to ethical business practices and actively engage in socially responsible investing. We believe that by aligning our investments with our clients' values, we can make a positive impact on society and contribute to a more sustainable future.
+                </p>
+                <p class="text-white" style="font-size: 16.0669px; line-height: 20.887px; letter-spacing: -0.160669px;">
+                    Thank you for considering Click Mentorship as your trusted partner in achieving your financial goals. We look forward to the opportunity to serve you and help you navigate the complex world of investments with confidence and success.
+                </p>
+            </div>
+
+            <div class="flex justify-center gap-[35px] items-center pt-8 border-t border-gray-800">
+                <a href="#pricing" class="text-white text-[14px] hover:text-gray-300 transition-colors">Pricing</a>
+                <a href="#about" class="text-white text-[14px] hover:text-gray-300 transition-colors">About Us</a>
+                <a href="#contact" class="text-white text-[14px] hover:text-gray-300 transition-colors">Contact Us</a>
+            </div>
+
+            <div class="text-center mt-8">
+                <p class="text-gray-500" style="font-size: 12px;">© 2024 Click Mentorship. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+        
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            overlay.classList.remove('active');
+        }
+        
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                const icon = this.querySelector('.faq-icon');
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.querySelector('.faq-answer').style.display = 'none';
+                    otherItem.querySelector('.faq-icon').textContent = '+';
+                    otherItem.style.backgroundColor = '#131518';
+                });
+                
+                // Toggle current FAQ
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    icon.textContent = '−';
+                    this.style.backgroundColor = '#222529';
+                } else {
+                    answer.style.display = 'none';
+                    icon.textContent = '+';
+                    this.style.backgroundColor = '#131518';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
