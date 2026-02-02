@@ -76,7 +76,12 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-cover bg-center bg-no-repeat md:bg-fixed" style="background-image: url('bg.webp');">
+<body class="min-h-screen">
+    <!-- Fixed Background Image Layer -->
+    <div class="fixed inset-0 -z-10">
+        <img src="bg.webp" class="w-full h-full object-cover object-center" alt="">
+    </div>
+    
     <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-[14px] px-[14px]">
         <div class="flex items-center justify-between px-[14px] w-full" style="max-width: 1251.58px; height: 56.9922px; background-color: #131518;">
             <div class="flex items-center gap-3">
@@ -114,11 +119,11 @@
         </div>
     </div>
 
-    <main class="min-h-screen flex flex-col items-center justify-center pt-20 px-5">
+    <main class="min-h-[100svh] flex flex-col items-center justify-center pt-20 px-5">
         <div class="text-center text-white max-w-3xl mx-auto mb-auto mt-32">
             <h1 class="hero-heading text-[80.0503px] leading-[80.0503px] tracking-[-4.80302px]">Welcome to Your Mentorship Journey</h1>
         </div>
-        <div class="absolute bottom-20 text-center text-white max-w-4xl px-5">
+        <div class="mt-4 text-center text-white max-w-4xl px-5">
             <p style="font-size: 16.0669px; line-height: 20.887px; letter-spacing: -0.160669px;">We've helped hundreds of people achieve their financial goals, We've developed a meticulously crafted, comprehensive six-step process that acts as your personal roadmap, guiding you steadily towards your investment goals.</p>
         </div>
     </main>
