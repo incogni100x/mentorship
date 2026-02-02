@@ -23,6 +23,15 @@
             background-color: rgb(243, 244, 246);
             color: rgb(17, 24, 39);
         }
+        #toast {
+            opacity: 0;
+            transform: translate(-50%, 8px);
+            transition: opacity 180ms ease, transform 180ms ease;
+        }
+        #toast.toast-show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-white">
@@ -144,6 +153,10 @@
         </div>
     </main>
 
+    <div id="toast" class="fixed left-1/2 bottom-6 z-50 px-4 py-3" style="display: none; background-color: #131518; color: #ffffff; border-radius: 12px; font-size: 14px; line-height: 18px; max-width: calc(100% - 28px);">
+        <span id="toastText"></span>
+    </div>
+
     <script>
         const PLAN_MAP = {
             silver: { label: 'Silver - 1 Month', amount: '$150' },
@@ -250,6 +263,32 @@
             qrImg.src = url;
         }
 
+        let toastTimer = null;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toastText');
+            if (!toast || !toastText) return;
+
+            if (toastTimer) {
+                clearTimeout(toastTimer);
+                toastTimer = null;
+            }
+
+            toastText.textContent = message;
+            toast.style.display = 'block';
+
+            requestAnimationFrame(function () {
+                toast.classList.add('toast-show');
+            });
+
+            toastTimer = setTimeout(function () {
+                toast.classList.remove('toast-show');
+                setTimeout(function () {
+                    toast.style.display = 'none';
+                }, 200);
+            }, 1800);
+        }
+
         async function copyText(text) {
             try {
                 await navigator.clipboard.writeText(text);
@@ -278,15 +317,20 @@
             }
         }
 
-        function copyCryptoAddress() {
+        async function copyCryptoAddress() {
             const key = document.getElementById('cryptoSelect').value;
             const data = CRYPTO_MAP[key];
-            if (!data) return;
-            copyText(data.address);
+            if (!data) {
+                showToast('Select crypto first');
+                return;
+            }
+            const ok = await copyText(data.address);
+            showToast(ok ? 'Address copied' : 'Copy failed');
         }
 
-        function copyPaypal() {
-            copyText('Megmack32@gmail.com\n@megmack39\nFriends & Family only');
+        async function copyPaypal() {
+            const ok = await copyText('Megmack32@gmail.com\n@megmack39\nFriends & Family only');
+            showToast(ok ? 'PayPal details copied' : 'Copy failed');
         }
 
         function showConfirmation() {
