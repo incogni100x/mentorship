@@ -29,25 +29,25 @@
 <body class="min-h-screen bg-white">
 
     <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-[14px] px-[14px]">
-        <div class="flex items-center justify-between px-[14px] w-full" style="max-width: 1251.58px; height: 56.9922px; background-color: #ffffff; border: 1px solid rgb(229, 231, 235);">
+        <div class="flex items-center justify-between px-[14px] w-full" style="max-width: 1251.58px; height: 56.9922px; background-color: #131518;">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="logo.svg" alt="Logo" class="h-10">
-                <span class="text-black text-[14px]">Click Mentorship</span>
+                <span class="text-white text-[14px]">Click Mentorship</span>
             </a>
-            <a href="index.html#plans" class="text-black text-[14px] hover:text-gray-600 transition-colors">Mentorship Plans</a>
+            <a href="index.html#plans" class="text-white text-[14px] hover:text-gray-300 transition-colors">Mentorship Plans</a>
         </div>
     </nav>
 
-    <main class="min-h-[100svh] pt-28 px-[14px] pb-16">
+    <main class="min-h-[100svh] pt-28 px-5 md:px-[14px] pb-16">
         <div class="w-full mx-auto" style="max-width: 900px;">
-            <div class="p-8" style="background-color: #ffffff; border: 1px solid rgb(229, 231, 235);">
+            <div class="p-6 md:p-8" style="background-color: #ffffff; border: 1px solid rgb(229, 231, 235);">
                 <div id="paymentForm">
                     <div class="mb-8">
                         <h1 class="text-black" style="font-size: 46.7554px; line-height: 46.7554px; letter-spacing: -1.87022px;">Complete your payment</h1>
                         <p class="mt-4" style="font-size: 16.0669px; line-height: 20.887px; letter-spacing: -0.160669px; color: rgb(108, 117, 132);">Choose a payment method below. Your selected plan will be shown automatically.</p>
                     </div>
 
-                    <div class="p-6" style="background-color: rgb(243, 244, 246);">
+                    <div class="p-4 md:p-6" style="background-color: rgb(243, 244, 246);">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                             <div>
                                 <p class="text-black" style="font-size: 14px;">Selected plan</p>
@@ -67,11 +67,12 @@
                         </div>
 
                         <div id="cryptoSection" class="mt-6">
-                            <div class="p-6" style="background-color: rgb(243, 244, 246);">
+                            <div class="p-4 md:p-6" style="background-color: rgb(243, 244, 246);">
                                 <div class="flex flex-col md:flex-row gap-6">
                                     <div class="md:w-1/2">
                                         <p class="text-black mb-3" style="font-size: 14px;">Select crypto</p>
                                         <select id="cryptoSelect" class="w-full p-3 text-black" style="background-color: #ffffff; border: 1px solid rgb(229, 231, 235); font-size: 14px;" onchange="onCryptoChange()">
+                                            <option value="" selected disabled>Select crypto</option>
                                             <option value="btc">Bitcoin (BTC)</option>
                                             <option value="usdc_erc20">USDC (ERC20)</option>
                                             <option value="usdc_solana">USDC (Solana)</option>
@@ -103,7 +104,7 @@
                         </div>
 
                         <div id="paypalSection" class="mt-6" style="display: none;">
-                            <div class="p-6" style="background-color: rgb(243, 244, 246);">
+                            <div class="p-4 md:p-6" style="background-color: rgb(243, 244, 246);">
                                 <p class="text-black" style="font-size: 14px;">PayPal (Friends &amp; Family only)</p>
                                 <div class="mt-3 p-4" style="background-color: #ffffff; border: 1px solid rgb(229, 231, 235);">
                                     <p class="break-all" style="font-size: 14px; line-height: 18px; color: rgb(108, 117, 132);">Megmack32@gmail.com</p>
@@ -211,7 +212,14 @@
 
             if (!address) return;
 
-            QRCode.toCanvas(canvas, address, { width: 200, margin: 1 }, function () {});
+            try {
+                if (typeof QRCode === 'undefined' || !QRCode || typeof QRCode.toCanvas !== 'function') {
+                    return;
+                }
+                QRCode.toCanvas(canvas, address, { width: 200, margin: 1 }, function () {});
+            } catch (e) {
+                return;
+            }
         }
 
         async function copyText(text) {
