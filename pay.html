@@ -70,8 +70,7 @@
 
                     <div class="mt-8">
                         <div class="flex gap-3">
-                            <button id="cryptoBtn" class="payment-method-btn payment-method-btn w-full py-3 transition-all" style="font-size: 14px;" onclick="selectPaymentMethod('crypto')">Crypto</button>
-                            <button id="paypalBtn" class="payment-method-btn payment-method-btn w-full py-3 transition-all" style="font-size: 14px;" onclick="selectPaymentMethod('paypal')">PayPal</button>
+                            <button id="cryptoBtn" class="payment-method-btn payment-method-btn w-full py-3 transition-all" style="font-size: 14px;" onclick="selectPaymentMethod('crypto')">Crypto payment</button>
                         </div>
 
                         <div id="cryptoSection" class="mt-6">
@@ -118,17 +117,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div id="paypalSection" class="mt-6" style="display: none;">
-                            <div class="p-4 md:p-6" style="background-color: rgb(243, 244, 246);">
-                                <p class="text-black" style="font-size: 14px;">PayPal (Friends &amp; Family only)</p>
-                                <div class="mt-3 p-4" style="background-color: #ffffff; border: 1px solid rgb(229, 231, 235);">
-                                    <p class="break-all" style="font-size: 14px; line-height: 18px; color: rgb(108, 117, 132);">Megmack32@gmail.com</p>
-                                    <p class="mt-2" style="font-size: 14px; line-height: 18px; color: rgb(108, 117, 132);">@megmack39</p>
-                                </div>
-                                <button class="mt-3 w-full text-white py-3 transition-all" style="background-color: rgb(41, 141, 255); font-size: 14px;" onclick="copyPaypal()">Copy PayPal details</button>
                             </div>
                         </div>
 
@@ -201,23 +189,14 @@
 
         function selectPaymentMethod(method) {
             const cryptoBtn = document.getElementById('cryptoBtn');
-            const paypalBtn = document.getElementById('paypalBtn');
             const cryptoSection = document.getElementById('cryptoSection');
-            const paypalSection = document.getElementById('paypalSection');
 
-            if (method === 'crypto') {
-                cryptoBtn.classList.add('active');
-                paypalBtn.classList.remove('active');
-                cryptoSection.style.display = 'block';
-                paypalSection.style.display = 'none';
-                onCryptoChange();
-                return;
-            }
+            // Crypto is the only supported option (client requested PayPal removal).
+            if (!cryptoBtn || !cryptoSection) return;
 
-            cryptoBtn.classList.remove('active');
-            paypalBtn.classList.add('active');
-            cryptoSection.style.display = 'none';
-            paypalSection.style.display = 'block';
+            cryptoBtn.classList.add('active');
+            cryptoSection.style.display = 'block';
+            onCryptoChange();
         }
 
         function onCryptoChange() {
@@ -326,11 +305,6 @@
             }
             const ok = await copyText(data.address);
             showToast(ok ? 'Address copied' : 'Copy failed');
-        }
-
-        async function copyPaypal() {
-            const ok = await copyText('Megmack32@gmail.com\n@megmack39\nFriends & Family only');
-            showToast(ok ? 'PayPal details copied' : 'Copy failed');
         }
 
         function showConfirmation() {
